@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天猫弹性导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            list-style: none;
+        }
+
+        body {
+            background-color: pink;
+        }
+
+        #nav {
+            width: 900px;
+            height: 63px;
+            background: url("images/DoubleOne.jpg") no-repeat right center #fff;
+            background-size: contain; /* 保持图像的宽高比例，将图片缩放到宽或者高正好适应定义背景的区域，但背景仍在定义的区域之内，被包含。*/
+            border-radius: 5px;
+            position: relative;
+            margin: 100px auto;
+        }
+
+        #nav ul {
+            position: relative;
+        }
+
+        #nav ul li {
+            float: left;
+            width: 88px;
+            height: 63px;
+            text-align: center;
+            line-height: 63px;
+            cursor: pointer;
+        }
+
+        #tmall {
+            width: 88px;
+            height: 63px;
+            background: url("images/t-mall.png") no-repeat;
+            background-size: contain;
+            position: absolute;
+            top: 3px;
+        }
+    </style>
+</head>
+<body>
+<nav id="nav">
+    <span id="tmall"></span>
+    <ul>
+        <li>双11会场</li>
+        <li>服装会场</li>
+        <li>数码家电</li>
+        <li>家具建材</li>
+        <li>母婴童装</li>
+        <li>手机会场</li>
+        <li>美妆会场</li>
+        <li>进口会场</li>
+        <li>飞猪旅行</li>
+    </ul>
+</nav>
+<script>
+    window.onload = function () {
+        // 1.获取需要的标签
+        var nav = $("nav");
+        var t_mall = nav.children[0];
+        var ul = nav.children[1];
+        var allLis = ul.children;
+
+        // 3.1 记录鼠标点击的位置
+        var beginX = 0;
+
+        // 2.遍历所有的li标签
+        for(var i=0; i<allLis.length; i++){
+            var li = allLis[i];
+
+            // 2.1 监听鼠标进入事件
+            li.onmouseover = function () {
+                end = this.offsetLeft;
+            };
+
+            // 2.2 监听鼠标按下事件
+            li.onmousedown = function () {
+                beginX = this.offsetLeft;
+            };
+
+            // 2.3 监听鼠标离开事件
+            li.onmouseout = function () {
+                end = beginX;
+            };
+        }
+
+        // 3.缓动动画
+        var begin = 0, end = 0;
+        setInterval(function () {
+            begin = begin + (end - begin) * 0.1;
+            t_mall.style.left = begin + "px";
+        }, 10);
+
+
+
+        function $(id) {
+            return typeof id === "string" ? document.getElementById(id) : null;
+        }
+    }
+</script>
+</body>
+</html>
