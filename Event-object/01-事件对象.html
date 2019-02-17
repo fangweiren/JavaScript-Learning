@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button id="btn">点我</button>
+    
+<script>
+    var btn = document.getElementById("btn");
+    
+    btn.onclick = function (event) {  // event 就是当前事件的对象，简称事件对象
+        var e = event || window.event;
+        console.log(e.target);
+    };
+    // 只要触发 DOM 上的某个事件时，会产生一个事件对象event，这个对象中包含着所有与事件
+    // 有关的信息。IE6-8 只能通过 window.event 获取事件对象。
+
+
+    btn.onmouseover = function (event) {
+    var e = event || window.event;
+    console.log(e.target);
+    }
+
+    // event 常见属性
+    // clientX：光标相对于该网页的水平位置
+    // clientY：光标相对于该网页的垂直位置
+    // type：事件的类型
+    // target：该事件被传送到的对象
+    // screenX：光标相对于该屏幕的水平位置
+    // screenY：光标相对于该屏幕的垂直位置
+    // pageX：光标相对于该网页的水平位置（不适用 IE）
+    // pageY：光标相对于该网页的垂直位置（不适用 IE）
+    // width：该窗口或框架的宽度
+    // height：该窗口或框架的高度
+    // data：返回拖拽对象的 URL 字符串
+</script>
+</body>
+</html>

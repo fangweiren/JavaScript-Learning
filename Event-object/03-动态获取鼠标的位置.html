@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态获取鼠标的位置</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+<script>
+    var box = document.getElementById("box");
+    box.onmousemove = function (event) {
+        var e = event || window.event;
+
+        var x = e.clientX - box.offsetLeft;
+        var y = e.clientY - box.offsetTop;
+        // console.log(x, y);
+
+        box.innerText = "(x: " + x + ", y: " + y + ")";
+    }
+</script>
+</body>
+</html>
