@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜特效</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        img {
+            vertical-align: top; // 把元素的顶端与行中最高元素的顶端对齐
+        }
+
+        #box {
+            width: 400px;
+            height: 400px;
+            margin: 100px 0 0 100px;
+
+            position: relative;
+        }
+
+        #small_box {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ccc;
+
+            position: relative;
+        }
+
+        #small_box img {
+            width: 400px;
+            height: 400px;
+        }
+
+        #mark {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 255, 0, 0.5);
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: move;
+
+            display: none;
+        }
+
+        #big_box {
+            width: 600px;
+            height: 600px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+
+            position: absolute;
+            left: 410px;
+            top: 0;
+
+            display: none;
+        }
+
+        #list {
+            margin: 10px 0 0 100px;
+        }
+        #list img {
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="small_box">
+            <img src="images/pic001.jpg" alt="">
+            <span id="mark"></span>
+        </div>
+        <div id="big_box">
+            <img src="images/pic01.jpg" alt="" style="position: absolute; left: 0; top: 0">
+        </div>
+    </div>
+    <div id="list">
+        <img src="images/pic0001.jpg" alt="">
+        <img src="images/pic0002.jpg" alt="">
+        <img src="images/pic0003.jpg" alt="">
+    </div>
+<script>
+    window.onload = function () {
+        // 1.获取需要的标签
+        var box = document.getElementById("box");
+        var small_box = box.children[0];
+        var big_box = box.children[1];
+        var mark = small_box.children[1];
+        var big_img = big_box.children[0];
+        var list_img = document.getElementById("list").children;
+
+        // 2.监听鼠标进入小盒子
+        small_box.onmouseover = function () {
+            // 2.1 把隐藏的内容显示
+            mark.style.display = "block";
+            big_box.style.display = "block";
+
+            // 2.2 监听鼠标的移动
+            small_box.onmousemove = function (event) {
+                var e = event || window.event;
+
+                // 2.3 求出鼠标的坐标
+                var pointX = e.clientX - small_box.offsetParent.offsetLeft - mark.offsetWidth / 2;
+                var pointY = e.clientY - small_box.offsetParent.offsetTop - mark.offsetHeight / 2;
+
+                // 2.5 处理边界问题
+                if(pointX < 0){
+                    pointX = 0;
+                }else if(pointX >= small_box.offsetWidth - mark.offsetWidth){
+                    pointX = small_box.offsetWidth - mark.offsetWidth;
+                }
+
+                if(pointY < 0){
+                    pointY = 0;
+                }else if(pointY >= small_box.offsetHeight - mark.offsetHeight){
+                    pointY = small_box.offsetHeight - mark.offsetHeight;
+                }
+
+                // 2.4 让放大镜移动
+                mark.style.left = pointX + "px";
+                mark.style.top = pointY + "px";
+
+                // 2.6 大图移动起来
+                /* 公式：smallX / bigX = smallBox.width / 大图的宽度
+                 ⇒ bigX = smallX / (smallBox.width / 大图的宽度)
+                */
+                // 因为鼠标向右移动，大图要向左移动，所以需要取反
+                big_img.style.left = - pointX / (small_box.offsetWidth / big_box.offsetWidth) + "px";
+                big_img.style.top = - pointY / (small_box.offsetHeight / big_box.offsetHeight) + "px";
+                console.log(small_box.offsetWidth);
+                console.log(big_box.offsetWidth);
+
+                console.log("x=", pointX, "y=", pointY);
+                console.log(- pointX / (small_box.offsetWidth / big_box.offsetWidth));
+                console.log(- pointY / (small_box.offsetHeight / big_box.offsetHeight));
+                console.log("-----------------------");
+
+                // 2.7 为什么还不会移动
+                // 给 big_box 下的 img 添加绝对定位 style="position: absolute; left: 0; top: 0"
+            }
+        };
+
+        // 3.监听鼠标离开小盒子
+        small_box.onmouseout = function () {
+            // 3.1 把显示的内容隐藏
+            mark.style.display = "none";
+            big_box.style.display = "none";
+        };
+
+        // 4.遍历列表图片
+        for(var i=0; i<list_img.length; i++){
+            (function (i) {
+                var img = list_img[i];
+                img.onmouseover = function () {
+                    small_box.children[0].src = "images/pic00" + (i + 1) + ".jpg";
+                    big_img.src = "images/pic0" + (i + 1) + ".jpg"
+                }
+            })(i);
+        }
+    }
+</script>
+</body>
+</html>
