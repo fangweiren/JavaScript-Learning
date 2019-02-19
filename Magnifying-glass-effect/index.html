@@ -15,8 +15,8 @@
         }
 
         #box {
-            width: 400px;
-            height: 400px;
+            width: 398px;
+            height: 398px;
             margin: 100px 0 0 100px;
 
             position: relative;
@@ -36,8 +36,8 @@
         }
 
         #mark {
-            width: 100px;
-            height: 100px;
+            width: 200px;
+            height: 200px;
             background-color: rgba(255, 255, 0, 0.5);
             position: absolute;
             left: 0;
@@ -48,8 +48,8 @@
         }
 
         #big_box {
-            width: 600px;
-            height: 600px;
+            width: 398px;
+            height: 398px;
             border: 1px solid #ccc;
             overflow: hidden;
 
@@ -129,15 +129,8 @@
                  ⇒ bigX = smallX / (smallBox.width / 大图的宽度)
                 */
                 // 因为鼠标向右移动，大图要向左移动，所以需要取反
-                big_img.style.left = - pointX / (small_box.offsetWidth / big_box.offsetWidth) + "px";
-                big_img.style.top = - pointY / (small_box.offsetHeight / big_box.offsetHeight) + "px";
-                console.log(small_box.offsetWidth);
-                console.log(big_box.offsetWidth);
-
-                console.log("x=", pointX, "y=", pointY);
-                console.log(- pointX / (small_box.offsetWidth / big_box.offsetWidth));
-                console.log(- pointY / (small_box.offsetHeight / big_box.offsetHeight));
-                console.log("-----------------------");
+                big_img.style.left = - pointX / (mark.offsetWidth / big_box.offsetWidth) + "px";
+                big_img.style.top = - pointY / (mark.offsetHeight / big_box.offsetHeight) + "px";
 
                 // 2.7 为什么还不会移动
                 // 给 big_box 下的 img 添加绝对定位 style="position: absolute; left: 0; top: 0"
