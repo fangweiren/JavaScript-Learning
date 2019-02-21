@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>橱窗特效</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: none;
+        }
+
+        #box {
+            width: 800px;
+            height: 200px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #box ul {
+            width: 3510px; /* 27*130=3510 */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #box ul li {
+            float: left;
+        }
+
+        #box_top img {
+            width: 130px;
+        }
+
+        #box_bottom {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color: #e8e8e8;
+            width: 100%;
+            height: 25px;
+        }
+
+        .mask {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 26px;
+            background-color: orangered;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="box_top">
+            <li><img src="images/img1.jpg" alt=""></li>
+            <li><img src="images/img2.jpg" alt=""></li>
+            <li><img src="images/img3.jpg" alt=""></li>
+            <li><img src="images/img4.jpg" alt=""></li>
+            <li><img src="images/img5.jpg" alt=""></li>
+            <li><img src="images/img6.jpg" alt=""></li>
+            <li><img src="images/img7.jpg" alt=""></li>
+            <li><img src="images/img8.jpg" alt=""></li>
+            <li><img src="images/img9.jpg" alt=""></li>
+            <li><img src="images/img10.jpg" alt=""></li>
+            <li><img src="images/img11.jpg" alt=""></li>
+            <li><img src="images/img12.jpg" alt=""></li>
+            <li><img src="images/img13.jpg" alt=""></li>
+            <li><img src="images/img14.jpg" alt=""></li>
+            <li><img src="images/img15.jpg" alt=""></li>
+            <li><img src="images/img16.jpg" alt=""></li>
+            <li><img src="images/img17.jpg" alt=""></li>
+            <li><img src="images/img18.jpg" alt=""></li>
+            <li><img src="images/img19.jpg" alt=""></li>
+            <li><img src="images/img20.jpg" alt=""></li>
+            <li><img src="images/img21.jpg" alt=""></li>
+            <li><img src="images/img22.jpg" alt=""></li>
+            <li><img src="images/img23.jpg" alt=""></li>
+            <li><img src="images/img24.jpg" alt=""></li>
+            <li><img src="images/img25.jpg" alt=""></li>
+            <li><img src="images/img26.jpg" alt=""></li>
+            <li><img src="images/img27.jpg" alt=""></li>
+        </ul>
+        <div id="box_bottom">
+            <span class="mask"></span>
+        </div>
+    </div>
+<script>
+    window.onload = function () {
+        // 1.获取需要的标签
+        var box = document.getElementById("box");
+        var box_top = document.getElementById("box_top");
+        var box_bottom = document.getElementById("box_bottom");
+        var mask = box_bottom.children[0];
+
+        // 2.设置滚动条的长度
+        // 滚动条的长度 / 盒子的长度 = 盒子的长度 / 内容的长度
+        // ==>滚动条长度 = (盒子的宽度 / 内容的宽度) * 盒子的宽度
+        var mask_len = (box.offsetWidth / box_top.offsetWidth) * box.offsetWidth;
+        mask.style.width = mask_len + "px";
+
+        // 3.监听鼠标按下
+        mask.onmousedown = function (event) {
+            var e = event || window.event;
+
+            // 3.1 求出初始位置
+            var beginX = e.clientX - mask.offsetLeft;
+            
+            // 3.2 监听鼠标移动
+            document.onmousemove = function (event) {
+                var e = event || window.event;
+
+                // 3.3 求出移动的距离
+                var endX = e.clientX - beginX;
+
+                // 3.5 边界处理
+                if(endX < 0){
+                    endX = 0
+                }else if(endX >= box.offsetWidth - mask.offsetWidth){
+                    endX = box.offsetWidth - mask.offsetWidth;
+                }
+
+                // 3.4 移动起来
+                mask.style.left = endX + "px";
+
+                // 3.7 内容走的距离 / 滚动条走的距离 = (内容的长度 - 盒子的长度) / (盒子的长度 - 滚动条长度)
+                // ==>内容走的距离 = (内容的长度 - 盒子的长度) / (盒子的长度 - 滚动条长度) * 滚动条走的距离
+                var content_len = (box_top.offsetWidth - box.offsetWidth) / (box.offsetWidth - mask.offsetWidth) * endX;
+                box_top.style.left = - content_len + "px";
+
+                return false;
+            };
+
+            // 3.6 监听鼠标松开
+            document.onmouseup = function () {
+                document.onmousemove = null;
+            }
+
+
+        }
+    }
+</script>
+</body>
+</html>
