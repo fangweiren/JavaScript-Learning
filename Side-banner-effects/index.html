@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>侧边横幅特效</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: none
+        }
+
+        #aside {
+            width: 150px;
+            position: absolute;
+            left: 0;
+            top: 150px;
+        }
+
+        #aside img {
+            width: 100%;
+        }
+
+        p {
+            height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="aside">
+        <img src="images/float.jpg" alt="">
+    </div>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+    <p>博客地址：www.iamnancy.top</p>
+<script src="js/myFunc.js"></script>
+<script>
+    window.onload = function () {
+        // 1.获取广告头部的高度
+        var offset_top = $("aside").offsetTop;
+
+        // 2.监听窗口的滚动
+        var begin = 0, end = 0, timer = null;
+        window.onscroll = function () {
+            // 2.3 清除定时器
+            clearInterval(timer);
+
+            // 2.1 获取滚动的高度
+            var scroll_top = scroll().top;
+            end = offset_top + scroll_top;
+
+            // 2.2 缓动动画
+            timer = setInterval(function () {
+                begin = begin + (end - begin) * 0.2;
+                $("aside").style.top = begin + "px";
+
+                // 2.4 滚动到位后清除定时器
+                if(Math.round(begin) === end) {
+                    clearInterval(timer);
+                }
+            }, 20);
+        }
+    }
+</script>
+</body>
+</html>
