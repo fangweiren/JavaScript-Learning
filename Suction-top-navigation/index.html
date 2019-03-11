@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上方导航吸顶</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: none
+        }
+
+        img {
+            vertical-align: top;
+            width: 100%;
+        }
+
+        section {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <heeader id="head">
+        <img src="images/top.png" alt="">
+    </heeader>
+    <nav id="nav">
+        <img src="images/nav.png" alt="">
+    </nav>
+    <section>
+        <img src="images/body1.png" alt="">
+        <img src="images/body2.png" alt="">
+    </section>
+<script src="js/myFunc.js"></script>
+<script>
+    window.onload = function () {
+        // 1.求出导航距离顶部的距离 offsetHeight
+        var nav_top_height = $("nav").offsetTop;
+
+        // 2.监听窗口滚动
+        window.onscroll = function () {
+            var scroll_top_height = scroll().top;
+
+            if(scroll_top_height >= nav_top_height){
+                $("nav").className = "nav";
+            }else {
+                $("nav").className = "";
+            }
+        }
+    }
+</script>
+</body>
+</html>
