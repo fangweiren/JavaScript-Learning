@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>改变背景颜色</title>
+</head>
+<body>
+<script src="js/myFunc.js"></script>
+<script>
+    // 当屏幕宽度>=960时，页面背景颜色为红色；当屏幕宽度>=640时，页面背景颜色为蓝色；
+    // 当屏幕宽度<640时，页面背景颜色为绿色；
+    window.onload = function () {
+
+        changeColor(); // 一开始就有颜色
+
+        window.onresize = changeColor;
+
+        function changeColor() {
+            if(client().width >=960){
+                document.body.style.backgroundColor = "red";
+            }else if(client().width >=640){
+                document.body.style.backgroundColor = "blue";
+            }else {
+                document.body.style.backgroundColor = "green";
+            }
+        }
+    }
+</script>
+</body>
+</html>
