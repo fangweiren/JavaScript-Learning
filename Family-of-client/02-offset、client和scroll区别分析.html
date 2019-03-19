@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-offset、client和scroll区别分析</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            padding: 16px;
+            border: 12px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+        <p>Hello world!</p>
+    </div>
+<script>
+    var box = document.getElementById("box");
+
+    // 1.width 和 height
+    // border + padding + 内容的宽度和高度
+    console.log(box.offsetWidth, box.offsetHeight); // 256 256
+    // padding + 内容的宽度和高度
+    console.log(box.clientWidth, box.clientHeight); // 232 232
+    // 能够滚动的内容的宽度和高度
+    console.log(box.scrollWidth, box.scrollHeight); // 232 752
+
+    // 2.top 和 left
+    // offsetLeft：当前元素距离有定位的父盒子左边的距离；offsetTop：当前元素距离有定位的父盒子上边的距离
+    console.log(box.offsetLeft, box.offsetTop);
+    // clientLeft：左边边框的宽度；clientTop：上边边框的宽度
+    console.log(box.clientLeft, box.clientTop);
+    // scrollLeft：左边滚动的长度；scrollTop：上边滚动的长度
+    console.log(box.scrollLeft, box.scrollTop);
+</script>
+</body>
+</html>

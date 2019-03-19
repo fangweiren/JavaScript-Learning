@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-clientWidth和clientHeight</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            padding: 16px;
+            border: 12px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    var box = document.getElementById("box");
+    console.log(box.clientWidth, box.clientHeight); // 232, 232 不包括边框
+    console.log(box.offsetWidth, box.offsetHeight); // 256, 256
+</script>
+</body>
+</html>
