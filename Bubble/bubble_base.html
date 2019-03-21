@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>冒泡</title>
+    <style>
+        #father {
+            width: 600px;
+            height: 600px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="father">
+        <button id="btn">点我</button>
+    </div>
+<script>
+    var father = document.getElementById("father");
+    var btn = document.getElementById("btn");
+
+    btn.onclick = function (event) {
+        // 阻止冒泡
+        if(event && event.stopPropagation){ // w3c
+            event.stopPropagation();
+        }else {
+            event.cancelBubble = true;
+        }
+        alert("点击了按钮")
+    };
+    father.onclick = function () {
+        alert("点击了父标签")
+    };
+
+    document.onclick = function () {
+        alert("点击了文档")
+    }
+</script>
+</body>
+</html>
