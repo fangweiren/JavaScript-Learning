@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>蒙版效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 3000px;
+        }
+
+        #panel {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 0.4;
+            filter: alpha(opacity: 40); /* 针对IE透明度问题 */
+
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+
+        #login {
+            width: 300px;
+            height: 300px;
+            background-color: skyblue;
+            border-radius: 5px;
+
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -150px;
+            margin-top: -150px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">立即登录</button>
+    <div id="panel"></div>
+    <div id="login"></div>
+<script src="js/myFunc.js"></script>
+<script>
+    window.onload = function () {
+        // 1.监听按钮的点击
+        $("btn").onclick = function (event) {
+
+            // 3.阻止冒泡
+            if(event && event.stopPropagation){
+                event.stopPropagation();
+            }else {
+                window.event.cancelBubble = true;
+            }
+
+            // 1.1 显示面板和蒙版
+            $("panel").style.display = "block";
+            $("login").style.display = "block";
+
+            // 1.2 隐藏滚动条
+            document.body.style.overflow = "hidden";
+        };
+
+        // 2.点击文档
+        document.onclick = function (event) {
+            var e = event || window.event;
+            // 2.1 获取点击的事件源(获取对象的id)
+            var targetId = e.target ? e.target.id : e.srcElement.id;
+
+            // 2.2 判断
+            if(targetId !== "login"){
+                // 2.3 隐藏面板和蒙版
+                $("panel").style.display = "none";
+                $("login").style.display = "none";
+
+                // 2.4 显示滚动条
+                document.body.style.overflow = "auto";
+            }else { // 跳转
+                window.location.href = "http://www.baidu.com";
+            }
+        }
+    }
+</script>
+</body>
+</html>
