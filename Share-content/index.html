@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选中内容分享</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        p {
+            margin: 100px;
+            width: 300px;
+        }
+
+        #share {
+            width: 110px;
+            height: 50px;
+            position: absolute;
+            display: none;
+        }
+
+        #share a {
+            float: left;
+            margin-left: 5px;
+        }
+
+        #share-sinaminiblog, #share-qzone {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #share-sinaminiblog {
+            background: url(images/sina.png) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        #share-qzone {
+            background: url(images/qzone.png) no-repeat;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+    <p id="word">【销往全国！益家逸、安康、好相传等品牌被点名，原料竟是洋垃圾...触目惊心！】
+        22日早6点，海关总署组织12个直属海关开展打击“洋垃圾”走私“蓝天2019”第一轮集中行动，
+        截至昨天20:30，此次行动共打掉涉嫌走私犯罪团伙22个，抓获犯罪嫌疑人115名，查证废塑
+        料、废矿渣等各类破坏生态环境的涉案货物33.81万吨。其中，申报为“成人纸尿裤”的涉案货
+        物重达11.4吨，缉私人员在办案中发现这些货物包装凌乱，没有独立包装，没有生产日期、保
+        质期，甚至有一些带有的污渍和霉斑。明显不符合我国《一次性使用卫生用品卫生标准》。据
+        了解，这些纸尿裤是境外一次性卫生用品生产企业在生产中产生的废物。主要来源是机头料和
+        扫地料，即机器刚启动或者料件切换过程中产生的废品次品。</p>
+    <div id="share">
+        <a title="分享到新浪微博" id="share-sinaminiblog"></a>
+        <a title="分享到QQ空间" id="share-qzone"></a>
+    </div>
+<script src="js/myFunc.js"></script>
+<script>
+    window.onload = function () {
+        var selectedText;
+
+        // 1.监听鼠标抬起
+        $("word").onmouseup = function (event) {
+            // 1.3 事件
+            var e = event || window.event;
+
+            // 1.1 获取选中的文字
+            if(window.getSelection){ // 标准浏览器
+                selectedText = window.getSelection().toString();
+            }else { // IE 系列
+                selectedText = document.selection.createRange().text;
+            }
+
+            if(selectedText !== ""){
+                // 1.2 显示分享面板
+                //$("share").innerText = selectedText;
+                $("share").style.display = "block";
+
+                // 1.3 改变位置
+                $("share").style.left = e.clientX + "px";
+                $("share").style.top = e.clientY + "px";
+            }
+
+
+        };
+
+        // 2.监听文档的点击
+        document.onmousedown = function (event) {
+            var e = event || window.event;
+
+            // 2.1 获取点击区域的ID
+            var targetId = e.target ? e.target.id : e.srcElement.id;
+
+            // 2.2 判断
+            if(targetId === "share-sinaminiblog") { // 微博分享
+                window.location.href = "http://v.t.sina.com.cn/share/share.php?searchPic=false&title="
+                + selectedText + "&url=https://github.com/fangweiren";
+            }else if(targetId === "share-qzone") { // QQ 空间分享
+                window.location.href = "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?summary="
+                + selectedText + "&url=https://github.com/fangweiren";
+            }else if(targetId !== "share"){
+                $("share").style.display = "none";
+            }
+
+            // 2.3 防止拖动时选中内容
+            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+        }
+    }
+</script>
+</body>
+</html>
