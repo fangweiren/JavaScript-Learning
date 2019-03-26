@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本动画原理-封装</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 150px;
+            height: 150px;
+            background-color: blue;
+            position: absolute;
+            left: 0;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">向右走</button>
+    <button id="btn1">向左走</button>
+    <div id="box"></div>
+    <!--<div id="box1"></div>-->
+<script src="js/myFunc.js"></script>
+<script>
+    // 动画的基本原理：盒子的offsetLeft + 步长
+    window.onload = function () {
+        // 向右走
+        $("btn").onclick = function () {
+            constant($("box"), 600, 15)
+        };
+
+        // 向左走
+        $("btn1").onclick = function () {
+            constant($("box"), 50, -23)
+        };
+    };
+
+    /**
+     * 匀速动画函数
+     * @param {object} obj
+     * @param {number} target
+     * @param {number} step
+     */
+    function constant(obj, target, step) {
+        // 1.清除定时器
+        clearInterval(obj.timer);
+
+        // 2.设置定时器
+        obj.timer = setInterval(function () {
+            obj.style.left = obj.offsetLeft + step + "px";
+
+            if(Math.abs(target - obj.offsetLeft) <= Math.abs(step)) { // 盒子距离目标位置小于步长
+                clearInterval(obj.timer);
+                obj.style.left = target + "px";
+            }
+        }, 20);
+    }
+</script>
+</body>
+</html>
