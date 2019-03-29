@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态设置元素的属性</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">改变颜色</button>
+    <button id="btn2">改变长度</button>
+    <div id="box"></div>
+<script>
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var box = document.getElementById("box");
+
+    btn1.onclick = function () {
+        // box.style.backgroundColor = "blue";
+        changeCssStyle(box, "backgroundColor", "blue");
+    };
+
+    btn2.onclick = function () {
+        // box.style.width = "500px";
+        changeCssStyle(box, "width", "500px");
+    };
+
+    /**
+     *
+     * @param {object}obj
+     * @param {string}attr
+     * @param {string}value
+     */
+    function changeCssStyle(obj, attr, value) {
+        obj.style[attr] = value;
+    }
+</script>
+</body>
+</html>

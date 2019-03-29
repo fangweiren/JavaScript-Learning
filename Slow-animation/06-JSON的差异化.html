@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON的差异化</title>
+</head>
+<body>
+<script>
+    var dataArr = [10, 20, 30, 50];
+    dataArr.forEach(function (value, index,) {
+        console.log(value, index);
+    })
+
+    var obj = {"left": 300, "top": 200, "width": 500};
+    for(var key in obj){
+        console.log(key);
+        console.log(obj[key]);
+    }
+</script>
+</body>
+</html>

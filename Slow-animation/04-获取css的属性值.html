@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取 css 的属性值</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            border: 3px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">获取属性值</button>
+    <div id="box" style="width: 400px"></div>
+<script>
+    var btn = document.getElementById("btn");
+    var box = document.getElementById("box");
+
+    btn.onclick = function () {
+        // 在开发中，我们想要获得css样式，通常采用：box.style.top，box.style.backgroundColor等，
+        // 但这种方式只能得到行内样式，而平常用得最多的是页内样式或者外部样式。
+        // 只能获取行内样式
+        console.log(box.style.width); // 空
+        console.log(box.style.height); // 空
+        console.log(box.style.border); // 空
+        // 获取页内样式或者外部样式
+        console.log(getStyleAttr(box, "width")); // 400px
+        console.log(getStyleAttr(box, "height")); // 150px
+        console.log(getStyleAttr(box, "border")); // 3px solid rgb(0, 0, 0)
+    };
+
+    function getStyleAttr(obj, attr) {
+        if(obj.currentStyle){  // IE 和 opera
+            return obj.currentStyle[attr];
+        }else { // 其他W3C标准浏览器
+            return window.getComputedStyle(obj, null)[attr];
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本的缓动动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">向右走</button>
+    <div id="box"></div>
+<script src="js/myFunc.js"></script>
+<script>
+    window.onload = function () {
+        // 1.2 定义变量
+        var target = 800, timer = null;
+        var box = $("box");
+
+        // 1.监听按钮的点击
+        $("btn").onclick = function () {
+            // 1.1 清除定时器
+            clearInterval(timer);
+
+            // 1.3 设置定时器
+            timer = setInterval(function () {
+                // 1.4 求出步长
+                // 缓动动画原理：盒子本身的位置 + 步长（不断变化的，由大变小）
+                // 步长：begin = begin + (end - begin) * 缓动系数
+                var speed = (target - box.offsetLeft) * 0.2;
+
+                console.log("之前" + speed);
+
+                // 1.6 向上取整
+                speed = Math.ceil(speed);
+                console.log("之后" + speed);
+
+
+                // 1.5 移动起来
+                box.style.left = box.offsetLeft + speed + "px";
+                box.innerText = box.offsetLeft;
+
+                // 1.7 判断
+                if(box.offsetLeft === target){
+                    clearInterval(timer);
+                }
+            }, 200)
+        }
+    }
+</script>
+</body>
+</html>

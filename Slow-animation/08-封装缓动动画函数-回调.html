@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装缓动动画函数-单值</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">向右走</button>
+    <button id="btn1">向左走</button>
+    <div id="box"></div>
+<script src="js/myFunc.js"></script>
+<script>
+    window.onload = function () {
+        var box = $("box");
+
+        // 1.监听按钮的点击
+        $("btn").onclick = function () {
+            buffer(box, {"left": 800, "top": 120, "width": 230}, function () {  // 调用回调函数
+                buffer(box, {"top": 500})
+            })
+        };
+
+        $("btn1").onclick = function () {
+            buffer(box, {"top": 500})
+        }
+    };
+    
+    function buffer(obj, json, fn) {
+        // 1.1 清除定时器
+        clearInterval(obj.timer);
+
+        // 1.3 设置定时器
+        var begin = 0, target = 0, speed = 0;
+        obj.timer = setInterval(function () {
+            // 1.3.0 标记
+            var flag = true;
+            for(var k in json){
+                // 1.3.1 求出初始值
+                begin = parseInt(getCssStyleAttr(obj, k)) || 0; // 获取 CSS 样式值
+                target = parseInt(json[k]);
+
+                // 1.4 求出步长
+                // 缓动动画原理：盒子本身的位置 + 步长（不断变化的，由大变小）
+                // 步长：begin = begin + (end - begin) * 缓动系数
+                speed = (target - begin) * 0.2;
+
+                // 1.6 判断是否向上取整
+                speed = (target > begin) ? Math.ceil(speed) : Math.floor(speed);
+
+                // 1.5 移动起来
+                obj.style[k] = begin + speed + "px";
+
+                // 1.7 判断
+                if(begin !== target){
+                    flag = false;
+                }
+            }
+            // 1.8 清除定时器
+            if(flag){
+                clearInterval(obj.timer);
+
+                // 判断有没有回调函数
+                if(fn){
+                    fn()
+                }
+            }
+        }, 200)
+    }
+</script>
+</body>
+</html>
