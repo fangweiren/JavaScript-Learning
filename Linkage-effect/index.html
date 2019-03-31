@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>联动特效</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        img {
+            vertical-align: top;
+            width: 260px;
+        }
+        #box {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+        #close {
+            width: 26px;
+            height: 26px;
+            /*background-color: red;*/
+            position: absolute;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+            /*opacity: 0.3;*/
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <span id="close"></span>
+        <div id="top">
+            <img src="images/top.png" alt="">
+        </div>
+        <div id="bottom">
+            <img src="images/bottom.png" alt="">
+        </div>
+    </div>
+<script src="js/myFunc.js"></script>
+<script>
+    window.onload = function () {
+        // 1.获取需要的标签
+        var box = $("box");
+        var bottom = $("bottom");
+        var close = $("close");
+
+        // 监听鼠标点击
+        close.onclick = function () {
+            buffer(bottom, {"height": 0}, function () {
+                buffer(box, {"width": 0}, function () {
+                    close.style.display = "none";
+                })
+            })
+        }
+    }
+</script>
+</body>
+</html>
