@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+    width: 390px;
+}
+
+.slider {
+    width: 390px;
+    height: 237px;
+    position: relative;
+    margin: 100px auto;
+    overflow: hidden;
+}
+
+.slider-scroll {
+    width: 390px;
+    height: 210px;
+    position: relative;
+}
+
+.slider-main {
+    width: 780px;
+    height: 210px;
+    background-color: purple;
+}
+
+.slider-main-img {
+    width: 390px;
+    height: 210px;
+    position: absolute;
+}
+
+.slider-main-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.slider-control {
+    cursor: pointer;
+    text-align: center;
+}
+
+.icon-zuo, .icon-you {
+    position: absolute;
+    top: 50%;
+    margin-top: -32px;
+}
+
+.icon-zuo {
+    left: 5px;
+}
+
+.icon-you {
+    right: 5px;
+}
+
+.slider-control .icon-yuan,
+.slider-control .icon-iconfontyuan {
+    margin: 3px;
+}
