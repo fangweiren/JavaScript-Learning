@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+#slider {
+    width: 1200px;
+    height: 446px;
+    margin: 100px auto;
+    position: relative;
+    border: 1px solid #000;
+}
+
+#slider li {
+    position: absolute;
+    left: 200px;
+    top: 0;
+}
+
+#slider li img {
+    width: 100%;
+    height: 100%;
+}
+
+#slider_control {
+    opacity: 1;
+    cursor: pointer;
+}
+.icon-zuo, .icon-you {
+    position: absolute;
+    top: 50%;
+    margin-top: -32px;
+    z-index: 99;
+}
+
+.icon-zuo {
+    left: 5px;
+}
+
+.icon-you {
+    right: 5px;
+}

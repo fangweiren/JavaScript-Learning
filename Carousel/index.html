@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转木马</title>
+    <!--引入阿里巴巴图标矢量库-->
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div id="slider">
+        <ul id="slider_main">
+            <li><img src="images/pic1.jpg" alt=""></li>
+            <li><img src="images/pic2.jpg" alt=""></li>
+            <li><img src="images/pic3.jpg" alt=""></li>
+            <li><img src="images/pic4.jpg" alt=""></li>
+            <li><img src="images/pic2.jpg" alt=""></li>
+        </ul>
+        <div id="slider_control">
+            <span class="iconfont icon-zuo"></span>
+            <span class="iconfont icon-you"></span>
+        </div>
+    </div>
+<script src="js/myFunc.js"></script>
+<script>
+    window.onload = function () {
+        // 1.获取标签
+        var slider = $("slider");
+        var slider_main = $("slider_main");
+        var slider_main_lis = slider_main.children;
+        var slider_control = $("slider_control");
+
+        /* 2.设置向左、向右指示器的显示与隐藏
+        slider.onmouseover = function () {
+            // buffer(slider_control, {"opacity": 1})
+            slider_control.style.opacity = "1";
+        };
+        slider.onmouseout = function () {
+            // buffer(slider_control, {"opacity": 0})
+            slider_control.style.opacity = "0";
+        };
+        */
+
+        // 3.定位
+        var config = [ // 图片样式数组
+            {
+                width: 400,
+                top: 0,
+                left: 50,
+                opacity: 0.2,
+                zIndex: 2
+            },
+            {
+                width: 600,
+                top: 50,
+                left: 0,
+                opacity: 0.8,
+                zIndex: 3
+            },
+            {
+                width: 800,
+                top: 80,
+                left: 200,
+                opacity: 1,
+                zIndex: 4
+            },
+            {
+                width: 600,
+                top: 50,
+                left: 600,
+                opacity: 0.8,
+                zIndex: 3
+            },
+            {
+                width: 400,
+                top: 0,
+                left: 750,
+                opacity: 0.2,
+                zIndex: 2
+            }
+        ];
+        for(var i=0; i<config.length; i++){
+            buffer(slider_main_lis[i], config[i]);
+        }
+
+        // 4.监听左右指示器的点击
+        for(var j=0; j<slider_control.children.length; j++){
+            var item = slider_control.children[j];
+            item.onmousedown = function () {
+                if(this.className === "iconfont icon-zuo"){ // 左边
+                    config.push(config.shift());
+                }else { // 右边
+                    config.unshift(config.pop());
+                }
+
+                // 4.1 重新布局
+                for(var i=0; i<config.length; i++){
+                    buffer(slider_main_lis[i], config[i]);
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

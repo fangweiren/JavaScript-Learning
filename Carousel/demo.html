@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var arr = ["张三", "李四", "王五", "赵六"];
+    /*
+    * 数组的常见操作
+    * pop() 删除最后一个
+    * shift() 删除第一个
+    * push() 追加 添加到最后面
+    * unshift() 添加到第一个位置
+    * */
+    // console.log(arr.pop()); // 王二麻子
+    // console.log(arr); // ["张三", "李四", "王五"]
+
+    // arr.shift();
+    // console.log(arr);
+
+    // arr.push("赵六");
+    // console.log(arr);
+
+    // arr.unshift("赵六");
+    // console.log(arr);
+
+    // 删除第一个，然后添加到最后面
+    // arr.push(arr.shift());
+    // console.log(arr);
+
+    // 删除最后一个，添加到第一个
+    arr.unshift(arr.pop());
+    console.log(arr);
+</script>
+</body>
+</html>
