@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高级排他</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            /*list-style: none;*/
+        }
+
+        li {
+            background-color: #ccc;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+        .current {
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li class="current"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    // 鼠标移到 li 标签上改变背景颜色
+    var lis = document.getElementsByTagName("li");
+    /*
+    for(var i=0; i<lis.length; i++){
+        lis[i].onmouseover = function () {
+            for(var j=0; j<lis.length; j++){
+                lis[j].className = "";
+            }
+            this.className = "current";
+        }
+    }
+    */
+    var lastOne = 0;
+    for(var i=0; i<lis.length; i++){
+        (function (index) {
+            lis[index].onmouseover = function () {
+                lis[lastOne].className = ""; // 不需要遍历，只需清除之前的那个
+
+                this.className = "current";
+                lastOne = index;
+            }
+        })(i);
+    }
+</script>
+</body>
+</html>

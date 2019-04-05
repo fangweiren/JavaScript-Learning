@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数节流</title>
+</head>
+<body>
+
+<script>
+    function throttle(fn, delay) {
+        var timer = null;
+        return function () {
+            clearTimeout(timer);
+            timer = setTimeout(fn, delay);
+        }
+    }
+
+    window.onresize = throttle(function () {
+        console.log(document.documentElement.clientWidth);
+    }, 400)
+</script>
+</body>
+</html>

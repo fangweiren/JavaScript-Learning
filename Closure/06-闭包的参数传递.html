@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包的参数传递</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<img id="left" src="images/left.png" alt=""><br/>
+<img id="right" src="images/right.png" alt="">
+
+<script type="text/html">
+    function test(x) {
+        return function (y) {
+            // alert(x + y);
+            console.log(x); // 10
+            console.log(y); // 9
+        }
+    }
+
+    // 参数传递
+    test(10)(9);
+</script>
+<script>
+    // 点击左箭头向左移动，点击右箭头向右移动。
+    // 常规做法
+    /*
+    var l = 0, r = 0, speed = 50;
+    var left = document.getElementById("left");
+    var right = document.getElementById("right");
+
+    left.onclick = function () {
+        l -= speed;
+        this.style.marginLeft = l + "px";
+    };
+
+    right.onclick = function () {
+        r += speed;
+        this.style.marginLeft = r + "px";
+    };
+    */
+
+    // 闭包
+    function move(speed) {
+        var num = 0;
+        return function () {
+            num += speed;
+            this.style.marginLeft = num + "px";
+        }
+    }
+
+    var left = document.getElementById("left");
+    var right = document.getElementById("right");
+    left.onclick = move(-50);
+    right.onclick = move(50);
+</script>
+</body>
+</html>

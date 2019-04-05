@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    * 闭包的最大用处：一个是可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。
+    *
+    * */
+    function test1() {
+        var age = 19; // 局部变量
+        return function () {
+            console.log(age);
+        }
+    }
+
+    var func = test1();
+    console.log(func);
+    func();
+</script>
+</body>
+</html>

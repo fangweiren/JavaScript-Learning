@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="btn">点我</button>
+<script type="text/html">
+    /*
+    * 嵌套之间的函数会形成作用域链，每次对变量的访问实际上都是对整条作用域链的遍历查找。
+    * 先查找最近的作用域，然后再查找全局作用域。如果在某个作用域找到了变量就会结束本次查找过程。
+    * */
+
+    var num = 3;
+    (function () {
+        (function () {
+            (function () {
+                console.log(age)  // 报错
+                (function () {
+                    var age = 18;
+                    console.log(num); // 3
+                })();
+            })();
+        })();
+    })();
+</script>
+<script>
+    (function () {
+        var btn = document.getElementById("btn");
+        btn.onclick = function () {
+            alert(0)
+        }
+    })();
+
+
+
+    (function (document) {
+    var btn = document.getElementById("btn");
+    var btn1 = document.getElementById("btn");
+    var btn2 = document.getElementById("btn");
+    var btn3 = document.getElementById("btn");
+    var btn4 = document.getElementById("btn");
+    btn.onclick = function () {
+        alert(0)
+    }
+})(document);
+</script>
+</body>
+</html>
