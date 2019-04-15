@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    vertical-align: top;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.page {
+    width: 100%;
+    height: auto;
+    padding-top: 48px;
+}
+
+/*头部导航*/
+.header {
+    width: 100%;
+    height: 48px;
+    box-shadow: 0 5px 5px #ccc;
+
+    /*定位*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.header .header-in {
+    width: 2000px;
+    height: 100%;
+    /*background-color: red;*/
+    margin: 0 auto;
+}
+
+.header .header-in .header-left {
+    width: 700px; /*435*/
+    height: 28px;
+    /*background-color: red;*/
+    float: left;
+    margin-top: 10px;
+}
+
+.header .header-in .header-left li {
+    float: left;
+    margin-right: 20px;
+}
+
+.header .header-in .header-left li a {
+    line-height: 28px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    color: #444444;
+    font-size: 24px;
+}
+
+.header .header-in .header-left li a:hover {
+    color: #c90000;
+}
+
+.header .header-in .header-left li:last-child a {
+    font-size: 40px;
+    line-height: 4px;
+}
+
+.header .header-in .header-left .new {
+    width: 60px;
+    height: 28px;
+    background-color: #f4a523;
+    display: inline-block;
+    line-height: 28px;
+    /*margin-top: 2px;*/
+    margin-left: 6px;
+    color: white;
+}
+
+.header .header-in .header-left .logo-pic a {
+    width: 80px;
+    height: 28px;
+    display: inline-block;
+    background: url("../images/huaban_logo.png") no-repeat;
+    background-size: cover;
+}
+
+.header .header-in .header-center {
+    width: 1000px;
+    height: 40px;
+    background-color: red;
+    float: left;
+    margin-top: 4px;
+}
+
+.header .header-in .header-center input {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    font-size: 20px;
+    resize: none;
+}
+
+.header .header-in .header-right {
+    width: 200px;
+    height: 48px;
+    float: right;
+}
+
+.header .header-in .header-right a {
+    float: right;
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    display: inline;
+    text-align: center;
+    text-decoration: none;
+    color: #383838;
+    border: 1px solid #d9d9d9;
+    margin-top: 4px;
+    font-size: 24px;
+    border-radius: 4px;
+}
+
+.header .header-in .header-right a:first-child {
+    float: left;
+    background: linear-gradient(#E53E49, #D43636); /*渐变色*/
+    color: #fff;
+    border: 1px solid #c90000;
+}
+/*头部导航*/
