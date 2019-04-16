@@ -12,21 +12,21 @@ html, body {
 
 .page {
     width: 100%;
-    height: auto;
-    padding-top: 48px;
+    height: 2000px;
+    padding-top: 72px;
 }
 
-/*头部导航*/
+/*头部导航样式*/
 .header {
     width: 100%;
-    height: 48px;
-    box-shadow: 0 5px 5px #ccc;
+    height: 72px;
+    /*box-shadow: 0 5px 5px #ccc;  阴影 */
 
     /*定位*/
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 998;
 }
 
 .header .header-in {
@@ -37,8 +37,8 @@ html, body {
 }
 
 .header .header-in .header-left {
-    width: 700px; /*435*/
-    height: 28px;
+    width: 700px;
+    height: 52px;
     /*background-color: red;*/
     float: left;
     margin-top: 10px;
@@ -50,7 +50,7 @@ html, body {
 }
 
 .header .header-in .header-left li a {
-    line-height: 28px;
+    line-height: 52px;
     text-align: center;
     display: inline-block;
     text-decoration: none;
@@ -64,34 +64,35 @@ html, body {
 
 .header .header-in .header-left li:last-child a {
     font-size: 40px;
-    line-height: 4px;
+    line-height: 26px;
 }
 
 .header .header-in .header-left .new {
     width: 60px;
-    height: 28px;
+    height: 40px;
     background-color: #f4a523;
     display: inline-block;
-    line-height: 28px;
-    /*margin-top: 2px;*/
+    line-height: 40px;
+    margin-top: 6px;
     margin-left: 6px;
     color: white;
 }
 
 .header .header-in .header-left .logo-pic a {
-    width: 80px;
-    height: 28px;
+    width: 150px;
+    height: 52px;
+    /*margin-top: 10px;*/
     display: inline-block;
     background: url("../images/huaban_logo.png") no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 .header .header-in .header-center {
     width: 1000px;
-    height: 40px;
+    height: 60px;
     background-color: red;
     float: left;
-    margin-top: 4px;
+    margin-top: 6px;
 }
 
 .header .header-in .header-center input {
@@ -108,29 +109,259 @@ html, body {
 
 .header .header-in .header-right {
     width: 200px;
-    height: 48px;
+    height: 72px;
     float: right;
 }
 
 .header .header-in .header-right a {
     float: right;
     width: 90px;
-    height: 40px;
-    line-height: 40px;
+    height: 52px;
+    line-height: 52px;
     display: inline;
     text-align: center;
     text-decoration: none;
     color: #383838;
     border: 1px solid #d9d9d9;
-    margin-top: 4px;
+    margin-top: 9px;
     font-size: 24px;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .header .header-in .header-right a:first-child {
     float: left;
-    background: linear-gradient(#E53E49, #D43636); /*渐变色*/
+    background: linear-gradient(to right, #E53E49, #D43636); /*渐变色*/
     color: #fff;
     border: 1px solid #c90000;
 }
-/*头部导航*/
+/*头部导航样式*/
+
+/*轮播广告的样式*/
+.slider-banner {
+    width: 2000px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.slider-banner ul {
+    width: 100%;
+    height: 60px;
+    position: relative;
+}
+
+.slider-banner ul li {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+}
+
+.slider-banner ul li a {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+.slider-banner ul li:nth-child(1) a {
+    background: url("../images/top_banner01.jpg") no-repeat;
+}
+
+.slider-banner ul li:nth-child(2) a {
+    background: url("../images/top_banner02.jpg") no-repeat;
+}
+
+.slider-banner ul li:nth-child(3) a {
+    background: url("../images/top_banner03.jpg") no-repeat;
+}
+
+.slider-banner ul li:nth-child(4) a {
+    background: url("../images/top_banner04.jpg") no-repeat;
+}
+
+.slider-banner ul li:nth-child(5) a {
+    background: url("../images/top_banner05.jpg") no-repeat;
+}
+
+.slider-banner ul li:nth-child(6) a {
+    background: url("../images/top_banner06.jpg") no-repeat;
+}
+
+.slider-banner ul li:nth-child(7) a {
+    background: url("../images/top_banner07.jpg") no-repeat;
+}
+/*轮播广告的样式*/
+
+/*快速登录样式*/
+.quick-login {
+    width: 2000px;
+    height: 120px;
+    margin: 0 auto;
+    background: url("../images/login_header_blurbg.jpg");
+}
+
+.quick-login .quick-login-in {
+    width: 1600px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 18px;
+}
+
+.quick-login .quick-login-in .intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.quick-login .quick-login-in .intro .title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.quick-login .quick-login-in .login-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.quick-login .quick-login-in .login-icon li {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+.quick-login .quick-login-in .login-icon li:first-child {
+    margin-left: 15px;
+}
+
+.quick-login .quick-login-in .login-icon li a {
+    width: 54px;
+    height: 54px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.quick-login .quick-login-in .login-icon li:nth-child(1) a {
+    background: url("../images/icon.jpg") 0 0;
+}
+
+.quick-login .quick-login-in .login-icon li:nth-child(2) a {
+    background: url("../images/icon.jpg") 60px 0;
+}
+
+.quick-login .quick-login-in .login-icon li:nth-child(3) a {
+    background: url("../images/icon.jpg") 140px 0;
+}
+
+.quick-login .quick-login-in .login-icon li:nth-child(4) a {
+    background: url("../images/icon.jpg") 220px 0;
+}
+
+.quick-login .quick-login-in .login-icon .tip-text {
+    position: relative;
+}
+
+.quick-login .quick-login-in .login-icon .tip-text .line-left {
+    width: 40px;
+    border: 1px solid #fff;
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: -45px;
+}
+
+.quick-login .quick-login-in .login-icon .tip-text .line-right {
+    width: 40px;
+    border: 1px solid #fff;
+    display: block;
+    position: absolute;
+    top: 12px;
+    right: -45px;
+}
+/*快速登录样式*/
+
+/*吸顶效果样式*/
+.top-nav {
+    width: 100%;
+    height: 80px;
+    background-color: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 72px;
+    left: 0;
+    z-index: 999;
+    display: none;
+}
+.top-nav .top-nav-in {
+    width: 2000px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.top-nav .top-nav-in>div {
+    width: 400px;
+    height: 100%;
+    color: #fff;
+}
+
+.top-nav .top-nav-in .left {
+    float: left;
+}
+
+.top-nav .top-nav-in .left p:nth-child(1) {
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.top-nav .top-nav-in .right {
+    float: right;
+    padding-top: 19px;
+    box-sizing: border-box;
+}
+
+.top-nav .top-nav-in .right li {
+    float: left;
+    width: 42px;
+    height: 42px;
+    margin-left: 8px;
+}
+
+.top-nav .top-nav-in .right li:nth-child(1) {
+    width: 180px;
+    line-height: 42px;
+}
+
+.top-nav .top-nav-in .right li:nth-child(2) {
+    background: url("../images/icon2.png") 0 0;
+    background-size: cover;
+}
+
+.top-nav .top-nav-in .right li:nth-child(3) {
+    background: url("../images/icon2.png") -42px 0;
+    background-size: cover;
+}
+
+.top-nav .top-nav-in .right li:nth-child(4) {
+    background: url("../images/icon2.png") -84px 0;
+    background-size: cover;
+}
+
+.top-nav .top-nav-in .right li:nth-child(5) {
+    background: url("../images/icon2.png") -126px 0;
+    background-size: cover;
+}
+
+.top-nav .top-nav-in .right li a {
+    width: 42px;
+    height: 42px;
+    display: inline-block;
+    cursor: pointer;
+}
+/*吸顶效果样式*/
