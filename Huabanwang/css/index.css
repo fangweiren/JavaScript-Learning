@@ -12,7 +12,7 @@ html, body {
 
 .page {
     width: 100%;
-    height: 2000px;
+    height: auto;
     padding-top: 72px;
 }
 
@@ -365,3 +365,224 @@ html, body {
     cursor: pointer;
 }
 /*吸顶效果样式*/
+
+/*类型标题样式*/
+.type-title {
+    width: 100%;
+    height: 160px;
+}
+
+.type-title .type-title-in {
+    position: relative;
+    width: 300px;
+    height: 100%;
+    line-height: 160px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 44px;
+    color: #666;
+}
+
+.type-title .type-title-in .line-left {
+    width: 60px;
+    border-top: 1px solid #666;
+    position: absolute;
+    top: 79px;
+    left: 15px;
+}
+
+.type-title .type-title-in .line-right {
+    width: 60px;
+    border-top: 1px solid #666;
+    position: absolute;
+    top: 79px;
+    right: 15px;
+}
+/*类型标题样式*/
+
+/*选项卡样式*/
+.tab {
+    width: 100%;
+    height: auto;
+}
+
+.tab .tab-header {
+    width: 450px;
+    height: 48px;
+    margin: 0 auto;
+}
+
+.tab .tab-header ul li {
+    width: 150px;
+    line-height: 47px;
+    text-align: center;
+    float: left;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.tab .tab-header ul li.current {
+    border-bottom: 1px solid orangered;
+    color: orangered;
+}
+
+.tab .tab-content {
+    width: 100%;
+}
+
+.tab .tab-content .dom {
+    display: none;
+    background-color: #e8e8e8;
+}
+
+.tab .tab-content .dom:nth-child(1) {
+    width: 2000px;
+    margin: 0 auto;
+}
+
+.tab .tab-content .dom:nth-child(2) {
+    width: 2000px;
+    margin: 0 auto;
+    background-color: yellow;
+}
+
+.tab .tab-content .dom:nth-child(3) {
+    width: 2000px;
+    margin: 0 auto;
+    background-color: blue;
+}
+
+.dom-top {
+    width: 1930px;
+    height: 189px;
+    padding: 35px;
+    margin: 0 auto;
+}
+
+.dom-top ul li {
+    width: 354px;
+    height: 189px;
+    border-radius: 5px;
+    float: left;
+    margin-left: 40px;
+}
+
+.dom-top ul li:nth-child(1) {
+    margin-left: 0;
+}
+
+.dom-top ul li a {
+    width: 354px;
+    height: 189px;
+    display: inline-block;
+}
+
+.dom-top ul li:nth-child(1) a {
+    background: url("../images/top01.png");
+    background-size: 100% 100%
+}
+
+.dom-top ul li:nth-child(2) a {
+    background: url("../images/top02.jpg");
+    background-size: 100% 100%
+}
+
+.dom-top ul li:nth-child(3) a {
+    background: url("../images/top03.jpg");
+    background-size: 100% 100%
+}
+
+.dom-top ul li:nth-child(4) a {
+    background: url("../images/top04.jpg");
+    background-size: 100% 100%
+}
+
+.dom-top ul li:nth-child(5) a {
+    background: url("../images/top05.jpg");
+    background-size: 100% 100%
+}
+/*选项卡样式*/
+
+.dom-pull {
+    width: 2000px;
+    padding: 20px 0;
+    position: relative;
+    margin: 0 auto;
+    height: 800px;
+}
+
+.dom-pull .box {
+    width: 234px;
+    float: left;
+    border: 1px solid #ccc;
+    position: relative;
+}
+
+.dom-pull .box p {
+    font-size: 18px;
+    margin: 8px;
+    /*允许长单词换行到下一行*/
+    word-wrap: break-word;
+}
+
+.dom-pull .box .pic {
+    position: relative;
+    cursor: pointer;
+}
+
+.dom-pull .box .pic img {
+    width: 234px;
+}
+
+/*蒙版*/
+.dom-pull .box .pic .cover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, .3);
+    display: none;
+}
+
+.dom-pull .box .btn-box {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    background-color: red;
+    z-index: 3;
+}
+
+.dom-pull .box .btn-box .collect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*height: 40px;*/
+    /*line-height: 40px;*/
+    font-size: 20px;
+    background-color: #E53E49;
+    padding: 6px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.dom-pull .box .btn-box .like {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    width: 38px;
+    height: 38px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dom-pull .box .btn-box .like .heart {
+    width: 14px;
+    height: 14px;
+    background: url("../images/action_icons12.png") -20px 0;
+    display: inline-block;
+}
