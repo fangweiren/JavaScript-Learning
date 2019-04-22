@@ -586,3 +586,38 @@ html, body {
     background: url("../images/action_icons12.png") -20px 0;
     display: inline-block;
 }
+
+/*右侧浮动样式*/
+.elevator-item {
+    position: fixed;
+    right: 80px;
+    bottom: 50px;
+    z-index: 999;
+    opacity: 1;
+}
+
+.elevator-item .elevator {
+    width: 40px;
+    height: 36px;
+    background: rgba(0, 0, 0, .5) url("../images/iconsprite_btbar.png") no-repeat 8px 6px;
+    /*display: none;*/
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.elevator-item .elevator:hover {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.elevator-item .plus {
+    width: 40px;
+    height: 36px;
+    background: rgba(0, 0, 0, .5) url("../images/iconsprite_btbar.png") no-repeat 8px -34px;
+    display: block;
+    border-radius: 5px;
+}
+
+.elevator-item .plus:hover {
+    background-color: rgba(0, 0, 0, 1);
+}
+/*右侧浮动样式*/

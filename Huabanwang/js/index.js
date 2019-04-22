@@ -1,4 +1,4 @@
-(function () {
+(function (window) {
     // 1.调用选项卡
     tab();
 
@@ -10,14 +10,50 @@
         waterFull("dom_pull", "box"); // 延迟布局
     }, 200);
 
+    // 7.返回顶部
+    // 7.1.定义变量
+    var scroll_top = 0, begin = 0, end = 0, timer = null;
+
+    // 适用有两个滚动事件共存
     // 6.监听窗口的滚动(滚动到底部加载图片)
-    window.onscroll = function () {
+    window.onscroll = function() {
         if(checkWillLoadImage()){
             autoCreateImg();
             waterFull("dom_pull", "box");
         }
     };
-})();
+
+    var oldMethod = window.onscroll;
+    if(typeof oldMethod == 'function'){
+        // 7.2 监听窗口的滚动
+        window.onscroll = function(){
+            oldMethod.call(this);
+            // 7.2.1 获取滚动的高度
+            scroll_top = scroll().top;
+            // 7.2.2 显示和隐藏
+            scroll_top > 1000 ? show($("elevator")) : hide($("elevator"));
+            begin = scroll_top;
+        }
+    }
+
+    // 7.3 监听返回顶部按钮的点击
+    $("elevator").onclick = function () {
+        // 7.3.1 清除定时器
+        clearInterval(timer);
+
+        // 7.3.2 开启缓动动画
+        timer = setInterval(function () {
+            begin = begin + (end - begin) / 10;
+            window.scrollTo(0, begin);
+
+            // 7.3.3 清除定时器
+            if(Math.round(begin) === end){
+                clearInterval(timer);
+            }
+        }, 20)
+    }
+
+})(window);
 
 function autoCreateImg() {
     // 4.1 数据
