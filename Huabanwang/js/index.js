@@ -60,9 +60,34 @@
 
     $("close_btn").onclick = function () {
         $("hb_login").style.display = "none";
-    }
+    };
+
+    // 9.无限轮播广告
+    bannerAutoPlay();
 
 })(window);
+
+function bannerAutoPlay() {
+    // 1.获取所有的li标签
+    var lis = $("slider_banner").getElementsByTagName("li");
+    var index = 0;
+
+    // 2.开始定时器
+    setInterval(function () {
+        // 2.1 改变透明度
+        for(var i=0; i<lis.length; i++){
+            var singerLi = lis[i];
+            buffer(singerLi, {"opacity": 0}, null);
+        }
+        buffer(lis[index], {"opacity": 1}, null);
+
+        // 2.2 索引++
+        index++;
+        if(index === lis.length){
+            index = 0;
+        }
+    }, 1500)
+}
 
 function autoCreateImg() {
     // 4.1 数据
