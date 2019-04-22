@@ -4,6 +4,19 @@
 
     // 4.动态创建元素
     autoCreateImg();
+
+    // 5.瀑布流的布局
+    setTimeout(function () {
+        waterFull("dom_pull", "box"); // 延迟布局
+    }, 200);
+
+    // 6.监听窗口的滚动(滚动到底部加载图片)
+    window.onscroll = function () {
+        if(checkWillLoadImage()){
+            autoCreateImg();
+            waterFull("dom_pull", "box");
+        }
+    };
 })();
 
 function autoCreateImg() {
@@ -39,7 +52,7 @@ function autoCreateImg() {
         {txt: '我们已经出发了太久，以至于我们忘了为什么要出发。——纪伯伦', pic: 'images/27.jpg'},
         {txt: '水来，我在水中等你；火来，我在灰烬中等你。——《你是我的独家记忆》', pic: 'images/28.jpg'},
         {txt: '天下就没有偶然，那不过是化了妆的，戴了面具的必然。——钱钟书', pic: 'images/29.jpg'},
-    ]
+    ];
 
     // 4.2 遍历
     for(var i=0; i<30; i++){
@@ -66,6 +79,29 @@ function autoCreateImg() {
         // 4.6 拼接
         str += htmlStr;
         $("dom_pull").innerHTML = str;
+
+        // 4.7 绑定事件
+        var wrapBox = $("dom_pull").getElementsByClassName("box");
+        var wrapPic = $("dom_pull").getElementsByClassName("pic");
+        for(var j=0; j<wrapBox.length; j++){
+            // 采集与收藏图标的显示与隐藏
+            wrapBox[j].onmouseover = function () {
+                this.childNodes[2].style.display = "block";
+            };
+
+            wrapBox[j].onmouseout = function () {
+                this.childNodes[2].style.display = "none";
+            };
+
+            // 图片蒙版显示与隐藏
+            wrapPic[j].onmouseover = function () {
+                this.childNodes[1].style.display = "block";
+            };
+
+            wrapPic[j].onmouseout = function () {
+                this.childNodes[1].style.display = "none";
+            };
+        }
     }
 }
 

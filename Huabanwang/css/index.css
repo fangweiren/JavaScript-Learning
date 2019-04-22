@@ -508,11 +508,10 @@ html, body {
     padding: 20px 0;
     position: relative;
     margin: 0 auto;
-    height: 800px;
 }
 
 .dom-pull .box {
-    width: 234px;
+    width: 315px;
     float: left;
     border: 1px solid #ccc;
     position: relative;
@@ -531,7 +530,7 @@ html, body {
 }
 
 .dom-pull .box .pic img {
-    width: 234px;
+    width: 315px;
 }
 
 /*蒙版*/
@@ -552,6 +551,7 @@ html, body {
     right: 10px;
     background-color: red;
     z-index: 3;
+    display: none;
 }
 
 .dom-pull .box .btn-box .collect {
