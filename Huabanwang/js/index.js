@@ -51,6 +51,15 @@
                 clearInterval(timer);
             }
         }, 20)
+    };
+
+    // 8.登录面板的显示与隐藏
+    $("login").onclick = function () {
+        $("hb_login").style.display = "block";
+    };
+
+    $("close_btn").onclick = function () {
+        $("hb_login").style.display = "none";
     }
 
 })(window);

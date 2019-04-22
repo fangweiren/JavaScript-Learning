@@ -621,3 +621,176 @@ html, body {
     background-color: rgba(0, 0, 0, 1);
 }
 /*右侧浮动样式*/
+
+/*登录面板*/
+.hb-login {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    z-index: 9999;
+    display: none;
+}
+
+.hb-login .login-center {
+    width: 620px;
+    height: 480px;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -240px;
+    margin-left: -310px;
+    border-radius: 5px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.hb-login .login-center .center_box {
+    width: 340px;
+    margin: 20px auto 0;
+    position: relative;
+    font-size: 18px;
+}
+
+.hb-login .login-center .close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: url("../images/msg_close.png") 0 0;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+}
+
+.hb-login .login-center .logo-img {
+    display: block;
+    width: 106px;
+    height: 36px;
+    margin: 0 auto;
+}
+
+.hb-login .login-center .center_box .txt-box {
+    font-size: 20px;
+    color: #999;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+.hb-login .login-center .center_box .txt-box:before {
+    content: "";
+    border-top: 1px solid #ededed;
+    display: block;
+    position: absolute;
+    width: 50px;
+    top: 13px;
+    left: 0;
+}
+
+.hb-login .login-center .center_box .txt-box:after {
+    content: "";
+    border-top: 1px solid #ededed;
+    display: block;
+    position: absolute;
+    width: 50px;
+    top: 13px;
+    right: 0;
+}
+
+.hb-login .login-center .center_box .buttons {
+    margin: 15px auto 20px;
+}
+
+.hb-login .login-center .center_box .buttons a {
+    background: url("../images/login_icons_tiny.svg") 0 0 no-repeat;
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.hb-login .login-center .center_box .buttons a.qzone {
+    background-position: -80px 0;
+}
+
+.hb-login .login-center .center_box .buttons a.wechat {
+    background-position: -160px 0;
+}
+
+.hb-login .login-center .center_box .buttons a.douban {
+    background-position: -240px 0;
+}
+
+.hb-login .login-center .center_box .buttons a.renren {
+    background-position: -320px 0;
+}
+
+.hb-login .login-center .center_box .mail-login {
+    margin-top: 15px;
+}
+
+.hb-login .login-center .center_box .mail-login .clear-input {
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.clear-input {
+    display: inline-block;
+    padding: 0 10px;
+    height: 48px;
+    font-size: 18px;
+    line-height: 1;
+    color: #777;
+    background: #FFF;
+    border: 1px solid #DDD;
+    border-radius: 2px;
+    width: 250px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.05);
+    -webkit-transition: color .2s linear,border-color .3s linear;
+}
+
+.hb-login .login-center .center_box .mail-login .btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn18 {
+    font-size: 20px;
+    padding: 0 15px;
+    border-radius: 3px;
+    height: 48px;
+    line-height: 48px;
+}
+
+.rbtn {
+    text-shadow: none;
+    background: #EC414D;
+    color: #fff;
+    box-shadow: none;
+    border: 1px solid #EC414D;
+}
+
+.hb-login .login-center .center_box .reset-password {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.red-link {
+    color: #9A0000;
+}
+
+.hb-login .login-center .center_box .switch-back {
+    text-align: right;
+    margin: 10px 0;
+}
+
+.hb-login .login-center a {
+    cursor: pointer;
+}
+/*登录面板*/
