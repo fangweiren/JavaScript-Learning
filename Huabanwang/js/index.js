@@ -15,11 +15,20 @@
     var scroll_top = 0, begin = 0, end = 0, timer = null;
 
     // 适用有两个滚动事件共存
-    // 6.监听窗口的滚动(滚动到底部加载图片)
+    // 6.监听窗口的滚动
     window.onscroll = function() {
+        // 6.1 瀑布流加载新图片的条件
         if(checkWillLoadImage()){
             autoCreateImg();
             waterFull("dom_pull", "box");
+        }
+
+        // 6.2 判断是否吸顶
+        var scrollTop = scroll().top;
+        if(scrollTop >= 150){
+            $("top_nav").style.display = "block";
+        }else {
+            $("top_nav").style.display = "none";
         }
     };
 

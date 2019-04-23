@@ -32,7 +32,7 @@ html, body {
 .header .header-in {
     width: 2000px;
     height: 100%;
-    /*background-color: red;*/
+    background-color: #fff;
     margin: 0 auto;
 }
 
@@ -288,12 +288,15 @@ html, body {
 
 /*吸顶效果样式*/
 .top-nav {
-    width: 100%;
+    width: 2000px;
     height: 80px;
     background-color: rgba(0, 0, 0, .5);
     position: fixed;
     top: 72px;
     left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
     z-index: 999;
     display: none;
 }
